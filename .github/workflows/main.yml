@@ -7,4 +7,4 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: IU-IPOD-F20/refactoring-project-SimonW@feature/basic_ci
+      uses: IU-IPOD-F20/refactoring-project-SimonWT@feature/basic_ci
