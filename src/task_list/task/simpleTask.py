@@ -1,4 +1,6 @@
-class Task:
+from task.task import Task
+
+class SimpleTask(Task):
     def __init__(self, id_: int, description: str, done: bool) -> None:
         self.id = id_
         self.description = description
@@ -9,5 +11,3 @@ class Task:
 
     def is_done(self) -> bool:
         return self.done
-
-
