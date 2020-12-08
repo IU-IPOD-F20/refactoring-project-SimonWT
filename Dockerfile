@@ -1,2 +1,8 @@
 FROM python:3.7.5-slim
-ENTRYPOINT python -c "print('========================Hello world========================')"
+
+COPY . /app
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT behave /app/src/features
