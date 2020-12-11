@@ -1,6 +1,6 @@
-from src.task_list.command.command import Command
-from src.task_list.task.task_list import TaskList
-from src.task_list.task.simple_task import SimpleTask
+from task_list.command.command import Command
+from task_list.task.task_list import TaskList
+from task_list.task.simple_task import SimpleTask
 
 
 class AddTaskCommand(Command):

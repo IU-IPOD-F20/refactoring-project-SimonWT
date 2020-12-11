@@ -1,5 +1,5 @@
-from src.task_list.command.command import Command
-from src.task_list.task.task_list import TaskList
+from task_list.command.command import Command
+from task_list.task.task_list import TaskList
 
 
 class QuitCommand(Command):

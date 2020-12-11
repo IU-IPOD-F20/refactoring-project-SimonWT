@@ -1,4 +1,4 @@
-from src.task_list.task.task import Task
+from task_list.task.task import Task
 
 
 class SimpleTask(Task):

@@ -1,13 +1,13 @@
-from src.task_list.command.quite_command import QuitCommand
-from src.task_list.command.help_command import HelpCommand
-from src.task_list.command.add_project_command import AddProjectCommand
-from src.task_list.command.show_command import ShowCommand
-from src.task_list.command.add_task_command import AddTaskCommand
-from src.task_list.command.check_command import CheckCommand
-from src.task_list.command.uncheck_command import UncheckCommand
-from src.task_list.controller import Controller
+from task_list.command.quite_command import QuitCommand
+from task_list.command.help_command import HelpCommand
+from task_list.command.add_project_command import AddProjectCommand
+from task_list.command.show_command import ShowCommand
+from task_list.command.add_task_command import AddTaskCommand
+from task_list.command.check_command import CheckCommand
+from task_list.command.uncheck_command import UncheckCommand
+from task_list.controller import Controller
 
-from src.task_list.task.task_list import TaskList
+from task_list.task.task_list import TaskList
 
 
 class TaskListApp:

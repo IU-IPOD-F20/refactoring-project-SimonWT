@@ -1,6 +1,6 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from src.task_list.task.task_list import TaskList
+from task_list.task.task_list import TaskList
 
 
 class Command(ABC):
