@@ -6,5 +6,6 @@ jobs:
     name: A job to say hello
     steps:
     - name: Hello world action step
-      id: hello
-      uses: IU-IPOD-F20/refactoring-project-SimonWT@feature/basic_tests
+      uses: IU-IPOD-F20/refactoring-project-SimonWT@master
+#    - name: Build
+#      run: docker build -t IU-IPOD-F20/refactoring-project-SimonWT:${GITHUB_REF##*/} .
