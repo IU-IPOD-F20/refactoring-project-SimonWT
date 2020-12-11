@@ -1,4 +1,5 @@
-from task_list.task.task import Task
+from src.task_list.task.task import Task
+
 
 class SimpleTask(Task):
     def __init__(self, id_: int, description: str, done: bool) -> None:

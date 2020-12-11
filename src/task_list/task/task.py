@@ -1,8 +1,8 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 
-class Task(ABC):
 
+class Task(ABC):
     @abstractmethod
     def set_done(self, done: bool) -> None:
         pass
