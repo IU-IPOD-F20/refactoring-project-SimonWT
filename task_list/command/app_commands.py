@@ -15,7 +15,7 @@ class AddProject(Leaf):
         tasks[name] = []
         task_list.set_tasks(tasks)
         return
-        
+
 
 class AddTask(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str: 
@@ -37,8 +37,11 @@ class AddTask(Leaf):
         tasks[project] = project_tasks
         return
 
+
 class Help(Leaf):
-    def __init__(self, arguments: List[str], console: Console, root_command: Command) -> None:
+    def __init__(
+        self, arguments: List[str], console: Console, root_command: Command
+    ) -> None:
         self.arguments = arguments
         self.console = console
         self.root_command = root_command
@@ -46,6 +49,7 @@ class Help(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:
         self.console.print("Commands:")
         self.root_command.name("  ")
+
 
 class Show(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:
@@ -55,8 +59,11 @@ class Show(Leaf):
                 self.console.print(task.display())
             self.console.print()
 
+
 class Check(Leaf):
-    def __init__(self, arguments: List[str], console: Console, is_done: bool = True) -> None:
+    def __init__(
+        self, arguments: List[str], console: Console, is_done: bool = True
+    ) -> None:
         self.arguments = arguments
         self.console = console
         self.is_done = is_done
