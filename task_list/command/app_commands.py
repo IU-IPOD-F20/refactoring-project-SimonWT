@@ -44,7 +44,8 @@ class Help(Leaf):
         self.root_command = root_command
 
     def operation(self, task_list: TaskList, input_string: str) -> str:
-        self.root_command.name()
+        self.console.print("Commands:")
+        self.root_command.name("  ")
 
 class Show(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:
@@ -76,3 +77,7 @@ class Check(Leaf):
                     return
         self.console.print(f"Could not find a task with an ID of {id_}")
         self.console.print()
+
+class Quit(Leaf):
+    def operation(self, task_list: TaskList, input_string: str) -> str:
+        quit(0)

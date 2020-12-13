@@ -19,16 +19,29 @@ def step_impl(context):
     context.help_msg = context.out.getvalue()
 
 
+@when("execute quit command")
+def step_impl(context):
+    try:
+        context.app.controller.process("quit")
+    except SystemExit as se:
+        context.exit = se
+
+
 @then("get description of commands")
 def step_impl(context):
-    print(context.help_msg)
     help_msg = """Commands:
-  quit
-  show
-  add project <project name>
-  add task <project name> <task description>
-  check <task ID>
-  uncheck <task ID>
-  help
+   quit
+   show
+   add project <project name>
+   add task <project name> <task description>
+   check <task ID>
+   uncheck <task ID>
+   help
 """
     assert context.help_msg == help_msg
+
+
+@then("quit from main app")
+def step_impl(context):
+    assert isinstance(context.exit, SystemExit)
+    assert context.exit.code == 0
