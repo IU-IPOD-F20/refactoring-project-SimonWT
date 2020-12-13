@@ -4,6 +4,7 @@ from task_list.task.task_list import TaskList
 
 class UncheckCommand(Command):
     command = "uncheck"
+
     def __init__(self, console) -> None:
         # self.command = "uncheck"
         self.console = console

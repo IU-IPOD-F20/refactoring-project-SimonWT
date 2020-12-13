@@ -8,7 +8,6 @@ import sys
 
 
 class Command(ABC):
-
     def add(self, command_name: str, command: Command) -> None:
         pass
 
@@ -25,7 +24,6 @@ class Command(ABC):
 
 
 class Leaf(Command):
-
     def __init__(self, arguments: List[str], console: Console) -> None:
         self.arguments = arguments
         self.console = console
@@ -53,7 +51,7 @@ class Composite(Command):
         parsed = input_string.split(" ", 1)
         command = parsed[0]
         rest = ""
-        if (len(parsed) > 1):
+        if len(parsed) > 1:
             rest = parsed[1]
         try:
             return self._children[command].operation(task_list, rest)
@@ -101,7 +99,9 @@ class AddTask(Leaf):
 
 
 class Help(Leaf):
-    def __init__(self, arguments: List[str], console: Console, root_command: Command) -> None:
+    def __init__(
+        self, arguments: List[str], console: Console, root_command: Command
+    ) -> None:
         self.arguments = arguments
         self.console = console
         self.root_command = root_command
@@ -120,7 +120,9 @@ class Show(Leaf):
 
 
 class Check(Leaf):
-    def __init__(self, arguments: List[str], console: Console, is_done: bool = True) -> None:
+    def __init__(
+        self, arguments: List[str], console: Console, is_done: bool = True
+    ) -> None:
         self.arguments = arguments
         self.console = console
         self.is_done = is_done
@@ -170,7 +172,7 @@ root_command.add("help", help_command)
 
 task_list = TaskList()
 
-### BEHAVIOR ### 
+### BEHAVIOR ###
 
 while True:
     command = console.input("> ")
