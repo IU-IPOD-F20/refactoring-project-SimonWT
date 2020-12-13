@@ -1,7 +1,7 @@
 import sys
 
-from console import Console
-from task_list_app import TaskListApp
+from task_list.console import Console
+from task_list.task_list_app import TaskListApp
 
 
 def main():

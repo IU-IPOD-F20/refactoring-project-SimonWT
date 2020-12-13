@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('requirements.txt') as f:
     required = f.read().splitlines()
@@ -6,7 +6,7 @@ with open('requirements.txt') as f:
 setup(
     name="task-list",
     version="0.0.1",
-    packages=["task_list"],
+    packages=find_packages(),
     install_requires=required,
     url="https://github.com/codurance/task-list",
     description="Task List Kata",
