@@ -7,5 +7,5 @@ jobs:
     steps:
     - name: Hello world action step
       uses: IU-IPOD-F20/refactoring-project-SimonWT@master
-    - name: lgeiger/black-action@master
-      args: . --check
+#    - name: lgeiger/black-action@master
+#      args: . --check
