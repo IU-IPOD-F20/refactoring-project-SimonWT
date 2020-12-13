@@ -1,7 +1,6 @@
 import sys
 from io import StringIO
 
-import pytest
 from behave import *
 
 from task_list.console import Console

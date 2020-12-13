@@ -6,6 +6,7 @@ from task_list.console import Console
 from task_list.task.simple_task import SimpleTask
 import sys
 
+
 class Command(ABC):
 
     def add(self, command_name: str, command: Command) -> None:
@@ -15,7 +16,7 @@ class Command(ABC):
         return False
 
     @abstractmethod
-    def name(self, parent_name: str ) -> None:
+    def name(self, parent_name: str) -> None:
         pass
 
     @abstractmethod
@@ -25,16 +26,17 @@ class Command(ABC):
 
 class Leaf(Command):
 
-    def __init__(self, arguments: List[str] , console: Console) -> None:
+    def __init__(self, arguments: List[str], console: Console) -> None:
         self.arguments = arguments
         self.console = console
 
     def operation(self, task_list: TaskList, input_string: str) -> str:
         pass
 
-    def name(self, parent_name: str ) -> None:
+    def name(self, parent_name: str) -> None:
         name = parent_name + "".join([" <" + arg + ">" for arg in self.arguments])
         self.console.print(name)
+
 
 class Composite(Command):
     def __init__(self, console: Console) -> None:
@@ -51,16 +53,15 @@ class Composite(Command):
         parsed = input_string.split(" ", 1)
         command = parsed[0]
         rest = ""
-        if(len(parsed) > 1):
+        if (len(parsed) > 1):
             rest = parsed[1]
         try:
             return self._children[command].operation(task_list, rest)
         except:
             self.console.print(f"I don't know what the command {command} is.")
             self.console.print()
-        
 
-    def name(self, parent_name: str = "" ) -> None:
+    def name(self, parent_name: str = "") -> None:
         for child_command in self._children:
             self._children[child_command].name(parent_name + " " + child_command)
 
@@ -75,7 +76,7 @@ class AddProject(Leaf):
         tasks[name] = []
         task_list.set_tasks(tasks)
         return
-        
+
 
 class AddTask(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:
@@ -98,6 +99,7 @@ class AddTask(Leaf):
         tasks[project] = project_tasks
         return
 
+
 class Help(Leaf):
     def __init__(self, arguments: List[str], console: Console, root_command: Command) -> None:
         self.arguments = arguments
@@ -107,6 +109,7 @@ class Help(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:
         root_command.name()
 
+
 class Show(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:
         for project, tasks in task_list.get_tasks().items():
@@ -114,6 +117,7 @@ class Show(Leaf):
             for task in tasks:
                 self.console.print(task.display())
             self.console.print()
+
 
 class Check(Leaf):
     def __init__(self, arguments: List[str], console: Console, is_done: bool = True) -> None:
@@ -163,7 +167,6 @@ root_command.add("uncheck", uncheck_command)
 
 help_command = Help([], console, add_command)
 root_command.add("help", help_command)
-
 
 task_list = TaskList()
 
