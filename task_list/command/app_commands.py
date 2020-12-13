@@ -18,7 +18,7 @@ class AddProject(Leaf):
 
 
 class AddTask(Leaf):
-    def operation(self, task_list: TaskList, input_string: str) -> str: 
+    def operation(self, task_list: TaskList, input_string: str) -> str:
         args = input_string.strip().split(" ", 1)
         if len(args) < 2:
             self.console.print("No arguments provided")
@@ -84,6 +84,7 @@ class Check(Leaf):
                     return
         self.console.print(f"Could not find a task with an ID of {id_}")
         self.console.print()
+
 
 class Quit(Leaf):
     def operation(self, task_list: TaskList, input_string: str) -> str:

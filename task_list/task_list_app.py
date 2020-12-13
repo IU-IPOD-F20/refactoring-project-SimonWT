@@ -3,15 +3,16 @@ from task_list.command.app_commands import AddProject, AddTask, Show, Help, Chec
 from task_list.command.command import Composite
 from task_list.controller import Controller
 
+
 class TaskListApp:
     def __init__(self, console):
         self.console = console
-    
+
         root_command = Composite(console)
 
         quit_command = Quit([], console)
         root_command.add("quit", quit_command)
-        
+
         show_command = Show([], console)
         root_command.add("show", show_command)
 
@@ -21,7 +22,6 @@ class TaskListApp:
         add_command.add("project", add_project)
         add_command.add("task", add_task)
         root_command.add("add", add_command)
-
 
         check_command = Check(["task ID"], console, True)
         root_command.add("check", check_command)
@@ -33,9 +33,8 @@ class TaskListApp:
         root_command.add("help", help_command)
 
         task_list = TaskList()
-        
-        self.controller = Controller(root_command, task_list)
 
+        self.controller = Controller(root_command, task_list)
 
     def run(self):
         while True:
