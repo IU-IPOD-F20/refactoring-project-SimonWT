@@ -7,7 +7,7 @@ class QuitCommand(Command):
         self.command = "quit"
 
     def execute(self, task_list: TaskList, arguments: str) -> None:
-        quit()
+        quit(0)
 
     def name(self) -> str:
         return self.command  # + (" <" + s + ">" for arg in self.arguments)
