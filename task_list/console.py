@@ -1,8 +1,8 @@
 from typing import Optional, IO
-
-
-class Console:
-    def __init__(self, input_reader: IO, output_writer: IO) -> None:
+from task_list.singleton import SingletonMeta
+class Console(metaclass=SingletonMeta):
+    
+    def __init__(self, input_reader: IO, output_writer: IO):
         self.input_reader = input_reader
         self.output_writer = output_writer
 

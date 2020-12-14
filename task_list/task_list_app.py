@@ -3,8 +3,10 @@ from task_list.command.app_commands import AddProject, AddTask, Show, Help, Chec
 from task_list.command.command import Composite
 from task_list.controller import Controller
 
+from task_list.singleton import SingletonMeta
 
-class TaskListApp:
+
+class TaskListApp(metaclass=SingletonMeta):
     def __init__(self, console):
         self.console = console
 
