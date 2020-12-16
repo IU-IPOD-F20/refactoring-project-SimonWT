@@ -45,4 +45,3 @@ def step_impl(context):
 def step_impl(context):
     assert isinstance(context.exit, SystemExit)
     assert context.exit.code == 0
-
