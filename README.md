@@ -16,18 +16,18 @@ All python dependencies in ``requirements.txt``.
 
 ### Build docker
 ```console
-docker build -t db .
+docker build -t dp .
 ```
 
 ### Test automatically (by pytest)
 
 ```console
-docker run db:latest
+docker run dp:latest
 ```
 
 ### Test by hands
 ```console
-docker run -it --rm --entrypoint /bin/bash grader:latest
+docker run -it --rm --entrypoint /bin/bash dp:latest
 behave /app/features
 python task_list
 ```

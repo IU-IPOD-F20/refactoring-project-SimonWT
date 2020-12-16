@@ -6,5 +6,5 @@ class DeadlineTask(SimpleTask):
         super().__init__()
         self.deadline = None
 
-    def set_deadline(deadline: str) -> None:
-        self.dedaline = deadline
+    def set_deadline(self, deadline: str) -> None:
+        self.deadline = deadline

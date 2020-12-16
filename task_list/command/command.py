@@ -1,5 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+from typing import Dict, List
+
 from task_list.task.task_list import TaskList
 from task_list.console import Console
 
@@ -29,7 +31,8 @@ class Leaf(Command):
         pass
 
     def name(self, parent_name: str) -> None:
-        name = parent_name + "".join([" <" + arg + ">" for arg in self.arguments])
+        name = parent_name + \
+               "".join([" <" + arg + ">" for arg in self.arguments])
         self.console.print(name)
 
 
@@ -60,4 +63,5 @@ class Composite(Command):
 
     def name(self, parent_name: str = "") -> None:
         for child_command in self._children:
-            self._children[child_command].name(parent_name + " " + child_command)
+            self._children[child_command].name(parent_name +
+                                               " " + child_command)
