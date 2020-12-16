@@ -27,12 +27,6 @@ def step_impl(context):
         context.exit = se
 
 
-@when("Execute show command")
-def step_impl(context):
-    context.app.controller.process("show")
-    context.help_msg = context.out.getvalue()
-
-
 @then("Get description of commands")
 def step_impl(context):
     help_msg = """Commands:
@@ -52,8 +46,3 @@ def step_impl(context):
     assert isinstance(context.exit, SystemExit)
     assert context.exit.code == 0
 
-
-@then("Show nothing")
-def step_impl(context):
-    help_msg = """"""
-    assert context.help_msg == help_msg

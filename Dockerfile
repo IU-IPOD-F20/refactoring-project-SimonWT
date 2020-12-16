@@ -5,4 +5,4 @@ WORKDIR /app
 
 RUN python setup.py install
 
-ENTRYPOINT behave /app/features
+ENTRYPOINT behave /app/features --no-capture
