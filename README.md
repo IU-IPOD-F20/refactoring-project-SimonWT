@@ -9,19 +9,29 @@
 * python 3
 * pip 3
 * docker
-### Install
-``python3 setup.py install``
+## Environment
+Recommend you to run in docker container (You need pre-installed docker client).
 
-### Run Application
-``python3 test_list``
+All python dependencies in ``requirements.txt``.
 
-### Run Tests
-``RINAT NAPISHI ZDES``
+### Build docker
+```console
+docker build -t dp .
+```
 
-#### Build app
-``docker build -t dp .``
-#### Run app
-``docker run dp:latest``
+### Test automatically (by pytest)
+
+```console
+docker run dp:latest
+```
+
+### Test by hands
+```console
+docker run -it --rm --entrypoint /bin/bash dp:latest
+behave /app/features
+python task_list
+```
+
 ## Refactoring Results
 ### Changes
 #### "Objectize"
@@ -80,5 +90,43 @@ Also we make object TaskList, which contain projects and tasks, Signletone.
 
 [reference](https://refactoring.guru/design-patterns/singleton)
 ## Tests
+1) Save unittests in ```./tests``` for `regression testing` already executed test cases which are re-executed to ensure existing functionalities work fine.
+
+2) Behavior-driven development (BDD) tests in ```./feature```. Basic scenarios are covered here.
+
+3) There is an opportunity to test app by hands in isolated environment (using docker)
 
 ## CI
+1) Run docker container and tests there
+2) Run black formater
+3) Run flake8 linter
+
+```yaml
+on: [push]
+
+jobs:
+  behave_tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Hello world action step
+      uses: IU-IPOD-F20/refactoring-project-SimonWT@master
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: psf/black@stable
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+      - name: flake8 Lint
+        uses: py-actions/flake8@v1
+```
+1) 

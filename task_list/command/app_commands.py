@@ -1,7 +1,8 @@
-from task_list.command.command import Command, Leaf, Composite
+from typing import List
+
+from task_list.command.command import Command, Leaf
 from task_list.task.task_list import TaskList
 from task_list.console import Console
-from typing import Dict, List
 from task_list.task.simple_task import SimpleTask
 
 
@@ -29,7 +30,7 @@ class AddTask(Leaf):
 
         project_tasks = tasks.get(project)
         if project_tasks is None:
-            self.console.print(f"Could not find a project with the name {project}.")
+            self.console.print(f"Could not find a project " f"with the name {project}.")
             self.console.print()
             return
         new_task = SimpleTask(task_list.next_id(), description, False)

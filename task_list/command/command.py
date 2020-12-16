@@ -1,5 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+from typing import Dict, List
+
 from task_list.task.task_list import TaskList
 from task_list.console import Console
 
