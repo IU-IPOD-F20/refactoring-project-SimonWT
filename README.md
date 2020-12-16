@@ -19,7 +19,7 @@ All python dependencies in ``requirements.txt``.
 docker build -t dp .
 ```
 
-### Test automatically (by pytest)
+### Test automatically
 
 ```console
 docker run dp:latest
