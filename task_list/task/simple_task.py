@@ -13,5 +13,8 @@ class SimpleTask(Task):
     def is_done(self) -> bool:
         return self.done
 
-    def display(self) -> str:
-        return f" [{'x' if self.is_done() else ' '}] " f"{self.id}: {self.description}"
+    def get_id(self) -> int:
+        return self.id
+
+    def get_description(self) -> str:
+        return self.description

@@ -92,11 +92,12 @@ We use Singletone for Console object, to avoid creating several instances for in
 
 Also we make object TaskList, which contain projects and tasks, Signletone.
 
+[reference](https://refactoring.guru/design-patterns/singleton)
+
 ### Final UML
 
 ![App](./images/app.png?raw=true "App")
 
-[reference](https://refactoring.guru/design-patterns/singleton)
 ## Tests
 1) Save unittests in ```./tests``` for `regression testing` already executed test cases which are re-executed to ensure existing functionalities work fine.
 

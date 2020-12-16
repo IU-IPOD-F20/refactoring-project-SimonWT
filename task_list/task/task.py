@@ -10,7 +10,3 @@ class Task(ABC):
     @abstractmethod
     def is_done(self) -> bool:
         pass
-
-    @abstractmethod
-    def display(self) -> str:
-        pass

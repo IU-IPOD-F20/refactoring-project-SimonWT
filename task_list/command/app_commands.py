@@ -57,7 +57,11 @@ class Show(Leaf):
         for project, tasks in task_list.get_tasks().items():
             self.console.print(project)
             for task in tasks:
-                self.console.print(task.display())
+                displayed = (
+                    f" [{'x' if task.is_done() else ' '}] "
+                    f"{task.get_id()}: {task.get_description()}"
+                )
+                self.console.print(displayed)
             self.console.print()
 
 
