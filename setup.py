@@ -10,5 +10,9 @@ setup(
     install_requires=required,
     url="https://github.com/codurance/task-list",
     description="Task List Kata",
-    entry_points={"console_scripts": ["task_list = task_list.__main__:main",]},
+    entry_points={
+        "console_scripts": [
+            "task_list = task_list.__main__:main",
+        ]
+    },
 )
