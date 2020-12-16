@@ -4,7 +4,7 @@ from io import StringIO
 from behave import *
 
 from task_list.console import Console
-from task_list.task_list_app import TaskListApp
+from task_list.app import TaskListApp
 
 
 @given("Created task list app")
