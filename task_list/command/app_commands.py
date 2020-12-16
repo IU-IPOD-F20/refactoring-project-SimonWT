@@ -30,8 +30,7 @@ class AddTask(Leaf):
 
         project_tasks = tasks.get(project)
         if project_tasks is None:
-            self.console.print(f"Could not find a project "
-                               f"with the name {project}.")
+            self.console.print(f"Could not find a project " f"with the name {project}.")
             self.console.print()
             return
         new_task = SimpleTask(task_list.next_id(), description, False)

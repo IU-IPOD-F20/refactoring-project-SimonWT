@@ -14,5 +14,4 @@ class SimpleTask(Task):
         return self.done
 
     def display(self) -> str:
-        return f" [{'x' if self.is_done() else ' '}] " \
-            f"{self.id}: {self.description}"
+        return f" [{'x' if self.is_done() else ' '}] " f"{self.id}: {self.description}"

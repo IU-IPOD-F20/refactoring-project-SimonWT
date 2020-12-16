@@ -1,6 +1,5 @@
 from task_list.task.task_list import TaskList
-from task_list.command.app_commands import AddProject, AddTask, \
-    Show, Help, Check, Quit
+from task_list.command.app_commands import AddProject, AddTask, Show, Help, Check, Quit
 from task_list.command.command import Composite
 from task_list.controller import Controller
 

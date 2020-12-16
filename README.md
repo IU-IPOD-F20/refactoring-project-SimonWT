@@ -78,11 +78,15 @@ To perform required command we need to pass the user input to the controller, wh
 3) There is an opportunity to test app by hands in isolated environment (using docker)
 
 ## CI
+1) Run docker container and tests there
+2) Run black formater
+3) Run flake8 linter
+
 ```yaml
 on: [push]
 
 jobs:
-  behave_tests: # Run application in docker container and run tests
+  behave_tests:
     runs-on: ubuntu-latest
     steps:
     - name: Hello world action step
@@ -93,6 +97,17 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: psf/black@stable
-
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+      - name: flake8 Lint
+        uses: py-actions/flake8@v1
 ```
 1) 
