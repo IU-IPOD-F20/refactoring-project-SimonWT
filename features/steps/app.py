@@ -13,13 +13,13 @@ def step_impl(context):
     context.app = TaskListApp(Console(sys.stdin, context.out))
 
 
-@when("execute help command")
+@when("Execute help command")
 def step_impl(context):
     context.app.controller.process("help")
     context.help_msg = context.out.getvalue()
 
 
-@when("execute quit command")
+@when("Execute quit command")
 def step_impl(context):
     try:
         context.app.controller.process("quit")
@@ -27,7 +27,13 @@ def step_impl(context):
         context.exit = se
 
 
-@then("get description of commands")
+@when("Execute show command")
+def step_impl(context):
+    context.app.controller.process("show")
+    context.help_msg = context.out.getvalue()
+
+
+@then("Get description of commands")
 def step_impl(context):
     help_msg = """Commands:
    quit
@@ -41,7 +47,13 @@ def step_impl(context):
     assert context.help_msg == help_msg
 
 
-@then("quit from main app")
+@then("Quit from main app")
 def step_impl(context):
     assert isinstance(context.exit, SystemExit)
     assert context.exit.code == 0
+
+
+@then("Show nothing")
+def step_impl(context):
+    help_msg = """"""
+    assert context.help_msg == help_msg
