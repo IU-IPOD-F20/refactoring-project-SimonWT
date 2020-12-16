@@ -9,19 +9,29 @@
 * python 3
 * pip 3
 * docker
-### Install
-``python3 setup.py install``
+## Environment
+Recommend you to run in docker container (You need pre-installed docker client).
 
-### Run Application
-``python3 test_list``
+All python dependencies in ``requirements.txt``.
 
-### Run Tests
-``RINAT NAPISHI ZDES``
+### Build docker
+```console
+docker build -t db .
+```
 
-#### Build app
-``docker build -t dp .``
-#### Run app
-``docker run dp:latest``
+### Test automatically (by pytest)
+
+```console
+docker run db:latest
+```
+
+### Test by hands
+```console
+docker run -it --rm --entrypoint /bin/bash grader:latest
+behave /app/features
+python task_list
+```
+
 ## Refactoring Results
 ### Changes
 #### "Objectize"
@@ -61,5 +71,28 @@ It means that our application have the "root", which is Composite and stores oth
 To perform required command we need to pass the user input to the controller, which will execute required command.
 >/task_list/controller.py
 ## Tests
+1) Save unittests in ```./tests``` for `regression testing` already executed test cases which are re-executed to ensure existing functionalities work fine.
+
+2) Behavior-driven development (BDD) tests in ```./feature```. Basic scenarios are covered here.
+
+3) There is an opportunity to test app by hands in isolated environment (using docker)
 
 ## CI
+```yaml
+on: [push]
+
+jobs:
+  behave_tests: # Run application in docker container and run tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Hello world action step
+      uses: IU-IPOD-F20/refactoring-project-SimonWT@master
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: psf/black@stable
+
+```
+1) 
