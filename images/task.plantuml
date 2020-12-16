@@ -1,0 +1,36 @@
+@startuml
+
+'-----------------------------------
+' YY 2020
+'-----------------------------------
+
+!include config.cfg
+
+abstract class Task {
+    ~None set_done(done: bool)
+    ~bool is_done()
+}
+
+class SimpleTask {
+    ~int id_
+    ~str description
+    ~bool done
+    ~None __init__(id_: int, description: str, done: bool)
+    ~None set_done(done: bool)
+    ~bool is_done()
+}
+
+Task <|-- SimpleTask
+
+class TaskList {
+    ~Dict[str, List[Task]] tasks
+    ~int last_id
+    ~None __init__()
+    ~Dict get_tasks()
+    ~None set_tasks(tasks: Dict[str, List[Task]])
+    ~int next_id
+}
+
+TaskList --> Task 
+
+@enduml

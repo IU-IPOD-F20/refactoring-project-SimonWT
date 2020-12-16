@@ -7,7 +7,7 @@ from task_list.task.simple_task import SimpleTask
 
 
 class AddProject(Leaf):
-    def operation(self, task_list: TaskList, input_string: str) -> str:
+    def execute(self, task_list: TaskList, input_string: str) -> str:
         name = input_string.strip()
         if len(name) == 0:
             self.console.print("No input_string provided")
@@ -19,7 +19,7 @@ class AddProject(Leaf):
 
 
 class AddTask(Leaf):
-    def operation(self, task_list: TaskList, input_string: str) -> str:
+    def execute(self, task_list: TaskList, input_string: str) -> str:
         args = input_string.strip().split(" ", 1)
         if len(args) < 2:
             self.console.print("No arguments provided")
@@ -47,13 +47,13 @@ class Help(Leaf):
         self.console = console
         self.root_command = root_command
 
-    def operation(self, task_list: TaskList, input_string: str) -> str:
+    def execute(self, task_list: TaskList, input_string: str) -> str:
         self.console.print("Commands:")
         self.root_command.name("  ")
 
 
 class Show(Leaf):
-    def operation(self, task_list: TaskList, input_string: str) -> str:
+    def execute(self, task_list: TaskList, input_string: str) -> str:
         for project, tasks in task_list.get_tasks().items():
             self.console.print(project)
             for task in tasks:
@@ -69,7 +69,7 @@ class Check(Leaf):
         self.console = console
         self.is_done = is_done
 
-    def operation(self, task_list: TaskList, input_string: str) -> str:
+    def execute(self, task_list: TaskList, input_string: str) -> str:
         task_id = input_string.strip()
         if len(task_id) == 0:
             self.console.print("No arguments provided")
@@ -88,5 +88,5 @@ class Check(Leaf):
 
 
 class Quit(Leaf):
-    def operation(self, task_list: TaskList, input_string: str) -> str:
+    def execute(self, task_list: TaskList, input_string: str) -> str:
         quit(0)

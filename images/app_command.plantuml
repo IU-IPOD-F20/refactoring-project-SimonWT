@@ -1,0 +1,34 @@
+@startuml
+
+'-----------------------------------
+' YY 2020
+'-----------------------------------
+
+!include config.cfg
+
+abstract class Command {
+    ~Console console
+    ~None name(parent_name: str)
+    ~str execute(task_list: TaskList, input_string: str)
+}
+
+class Composite {
+    ~Console console
+    ~Dict[str, Command] _children
+    ~None __init__(console: Console)
+    ~None name(parent_name: str)
+    ~str execute(task_list: TaskList, input_string: str)
+}
+
+class Leaf {
+    ~List[str] arguments
+    ~Console console
+    ~None __init__(arguments: List[str], console: Console)
+    ~None name(parent_name: str)
+    ~str execute(task_list: TaskList, input_string: str)
+}
+
+Command <|-- Leaf
+Command <|-- Composite
+
+@enduml

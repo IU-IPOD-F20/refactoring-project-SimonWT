@@ -68,6 +68,8 @@ It means that our application have the "root", which is Composite and stores oth
 
 * `add` - is Composite which stores in root with key "add"
 * `project <project name>` - is a Leaf, which stores in Composite above by key "project", and perform adding project to the app.
+
+![Commands](./images/app_command.png?raw=true "Commands")
 #### Strategy
 
 We have Leafs, which should perform some business logic. So by using Strategy pattern we created realization of Leaf for each user tasks: 
@@ -78,6 +80,8 @@ We have Leafs, which should perform some business logic. So by using Strategy pa
 - help
 - ... 
 
+![App Commands](./images/command.png?raw=true "App Commands")
+
 #### Front-Controller
 To perform required command we need to pass the user input to the controller, which will pass user input to root command and then pass execution line to required command.
 >/task_list/controller.py
@@ -87,6 +91,10 @@ To perform required command we need to pass the user input to the controller, wh
 We use Singletone for Console object, to avoid creating several instances for input and output stream for out app.
 
 Also we make object TaskList, which contain projects and tasks, Signletone.
+
+### Final UML
+
+![App](./images/app.png?raw=true "App")
 
 [reference](https://refactoring.guru/design-patterns/singleton)
 ## Tests

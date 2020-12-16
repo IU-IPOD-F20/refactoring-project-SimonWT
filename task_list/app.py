@@ -2,12 +2,13 @@ from task_list.task.task_list import TaskList
 from task_list.command.app_commands import AddProject, AddTask, Show, Help, Check, Quit
 from task_list.command.command import Composite
 from task_list.controller import Controller
+from task_list.console import Console
 
 from task_list.singleton import SingletonMeta
 
 
 class TaskListApp(metaclass=SingletonMeta):
-    def __init__(self, console):
+    def __init__(self, console: Console) -> None:
         self.console = console
 
         root_command = Composite(console)
@@ -38,7 +39,7 @@ class TaskListApp(metaclass=SingletonMeta):
 
         self.controller = Controller(root_command, task_list)
 
-    def run(self):
+    def run(self) -> None:
         while True:
             command = self.console.input("> ")
             self.controller.process(command)

@@ -1,0 +1,101 @@
+@startuml
+
+'-----------------------------------
+' YY 2020
+'-----------------------------------
+
+!include config.cfg
+
+class Controller{
+    ~Command root_command
+    ~TaskList task_list
+    ~None __init__( root_command: Command, task_list: TaskList)
+    ~None process(user_input: str)
+}
+
+abstract class Command {
+    ~Console console
+    ~None name(parent_name: str)
+    ~str execute(task_list: TaskList, input_string: str)
+}
+
+class Composite {
+    ~Console console
+    ~Dict[str, Command] _children
+    ~None __init__(console: Console)
+    ~None name(parent_name: str)
+    ~str execute(task_list: TaskList, input_string: str)
+}
+
+class Leaf {
+    ~List[str] arguments
+    ~Console console
+    ~None __init__(arguments: List[str], console: Console)
+    ~None name(parent_name: str)
+    ~str execute(task_list: TaskList, input_string: str)
+}
+
+Command <|-- Leaf
+Command <|-- Composite
+
+class AddTask {}
+class AddProject {}
+class Show {}
+class Help {}
+class Check{
+    ~None __init__(arguments: List[str], console: Console, isCheck: bool)
+}
+
+Leaf <|-- AddTask
+Leaf <|-- AddProject
+Leaf <|-- Show
+Leaf <|-- Check
+Leaf <|-- Help
+
+abstract class Task {
+    ~None set_done(done: bool)
+    ~bool is_done()
+}
+
+class SimpleTask {
+    ~int id_
+    ~str description
+    ~bool done
+    ~None __init__(id_: int, description: str, done: bool)
+    ~None set_done(done: bool)
+    ~bool is_done()
+}
+
+Task <|-- SimpleTask
+
+class TaskList {
+    ~Dict[str, List[Task]] tasks
+    ~int last_id
+    ~None __init__()
+    ~Dict get_tasks()
+    ~None set_tasks(tasks: Dict[str, List[Task]])
+    ~int next_id
+}
+
+TaskList --> Task 
+
+
+Controller --> TaskList
+Controller --> Command
+
+SimpleTask <-- AddTask
+
+class TaskListApp{
+    ~Console console
+    ~Controller controller
+    ~None __init__(controller: Controller)
+    ~None run()
+}
+
+TaskListApp --> Controller
+TaskListApp --> Console
+
+
+Console <-- Command
+
+@enduml
